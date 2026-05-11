@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RunOnFuel — Wissenschaftlicher Ernährungs-Kalkulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/design-system.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/calculator.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo">
+          <span class="logo-mark">ROF</span>
+          <div class="logo-text">
+            <span class="logo-name">RunOnFuel</span>
+            <span class="logo-sub">Sports Nutrition Science</span>
+          </div>
+        </a>
+        <nav class="header-nav">
+          <a href="#calculator">Kalkulator</a>
+          <a href="#science">Wissenschaft</a>
+          <a href="#methodology">Methodik</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Evidenzbasiert · Individualisiert · Präzise
+      </div>
+      <h1 class="hero-title">
+        Personalisierte<br />
+        <span class="hero-title-accent">Substratversorgung</span><br />
+        im Leistungssport
+      </h1>
+      <p class="hero-subtitle">
+        Berechnet Ihre optimale Kohlenhydratzufuhr auf Basis intestinaler
+        Absorptionskinetik, sportartspezifischer GI-Toleranz und
+        individueller Metabolik — inklusive Haushaltszucker-Maltodextrin-Rezeptur.
+      </p>
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <span class="metric-value">120 g/h</span>
+          <span class="metric-label">Max. exogene CHO-Rate</span>
+        </div>
+        <div class="hero-metric-divider"></div>
+        <div class="hero-metric">
+          <span class="metric-value">1:0.8</span>
+          <span class="metric-label">Glukose:Fruktose Elite</span>
+        </div>
+        <div class="hero-metric-divider"></div>
+        <div class="hero-metric">
+          <span class="metric-value">+50%</span>
+          <span class="metric-label">Oxidationsrate vs. Glukose</span>
+        </div>
+      </div>
+      <a href="#calculator" class="cta-button">
+        Kalkulation starten
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-bg-grid"></div>
+  </section>
+
+  <!-- SCIENCE STRIP -->
+  <section class="science-strip" id="science">
+    <div class="container">
+      <div class="science-grid">
+        <div class="science-card">
+          <div class="science-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>SGLT1 &amp; GLUT5</h3>
+          <p>Duale Transporter-Strategie: Glukose via SGLT1 (max. 60 g/h) + Fruktose via GLUT5 für bis zu 120 g/h exogene Oxidation.</p>
+        </div>
+        <div class="science-card">
+          <div class="science-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Crossover-Konzept</h3>
+          <p>Intensitätsabhängige Substratnutzung: Von Fettdominanz bei &lt;70% HRmax bis zu 100% Kohlenhydratoxidation an der VO₂max-Schwelle.</p>
+        </div>
+        <div class="science-card">
+          <div class="science-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M19.428 15.428a2 2 0 0 0-1.022-.547l-2.387-.477a6 6 0 0 0-3.86.517l-.318.158a6 6 0 0 1-3.86.517L6.05 15.21a2 2 0 0 0-1.806.547M8 4h8l-1 1v5.172a2 2 0 0 0 .586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 0 0 9 10.172V5L8 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Osmolalitätskontrolle</h3>
+          <p>Maltodextrin-Mischung hält Lösungen hypoton bis isoton (280–320 mOsm/kg) für maximale Magenentleerungsrate.</p>
+        </div>
+        <div class="science-card">
+          <div class="science-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Gut-Training</h3>
+          <p>Systematische SGLT1-Hochregulation durch Training-Exposition: bis zu 54% weniger intestinale Malabsorption nach 28 Tagen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Kalkulator</span>
+        <h2 class="section-title">Personalisierter Fueling-Plan</h2>
+        <p class="section-desc">Geben Sie Ihre physiologischen Parameter ein — der Algorithmus berechnet Ihre optimale Substratversorgung auf Basis intestinaler Transportkinetik.</p>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div class="step active" data-step="1">
+          <div class="step-number">1</div>
+          <span>Profil</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" data-step="2">
+          <div class="step-number">2</div>
+          <span>Belastung</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" data-step="3">
+          <div class="step-number">3</div>
+          <span>Konditionen</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" data-step="4">
+          <div class="step-number">4</div>
+          <span>Ergebnis</span>
+        </div>
+      </div>
+
+      <!-- Calculator Form -->
+      <div class="calculator-card">
+        <form id="fueling-form" novalidate>
+
+          <!-- STEP 1: Profile -->
+          <div class="form-step active" id="step-1">
+            <div class="step-header">
+              <h3>Biometrisches Profil</h3>
+              <p>Grundlegende physiologische Parameter für die Dosierungsberechnung</p>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="age">Alter</label>
+                <div class="input-wrapper">
+                  <input type="number" id="age" name="age" min="14" max="80" placeholder="30" required />
+                  <span class="input-unit">Jahre</span>
+                </div>
+                <span class="form-hint">Für HR<sub>max</sub>-Berechnung nach Tanaka: 208 − (0.7 × Alter)</span>
+              </div>
+              <div class="form-group">
+                <label for="weight">Körpergewicht</label>
+                <div class="input-wrapper">
+                  <input type="number" id="weight" name="weight" min="40" max="150" step="0.1" placeholder="75" required />
+                  <span class="input-unit">kg</span>
+                </div>
+                <span class="form-hint">Für Carbo-Loading-Berechnung (g/kg KG)</span>
+              </div>
+              <div class="form-group">
+                <label for="sweat-rate">Schweißrate <span class="optional">(optional)</span></label>
+                <div class="input-wrapper">
+                  <input type="number" id="sweat-rate" name="sweatRate" min="0.3" max="5" step="0.1" placeholder="1.2" />
+                  <span class="input-unit">L/h</span>
+                </div>
+                <span class="form-hint">Prä/Post-Gewichtsdifferenz nach Training. Standard: 1.2 L/h</span>
+              </div>
+              <div class="form-group">
+                <label>Gastrointestinales Training</label>
+                <div class="toggle-group">
+                  <label class="toggle-option">
+                    <input type="radio" name="gutTraining" value="none" checked />
+                    <div class="toggle-card">
+                      <span class="toggle-title">Kein Training</span>
+                      <span class="toggle-desc">Standard GI-Toleranz</span>
+                    </div>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="gutTraining" value="moderate" />
+                    <div class="toggle-card">
+                      <span class="toggle-title">Moderates Training</span>
+                      <span class="toggle-desc">&gt;14 Tage Hochdosis-Exposition</span>
+                    </div>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="gutTraining" value="advanced" />
+                    <div class="toggle-card">
+                      <span class="toggle-title">Fortgeschritten</span>
+                      <span class="toggle-desc">&gt;28 Tage, signifikante SGLT1-Adaption</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="step-nav">
+              <div></div>
+              <button type="button" class="btn-next" onclick="nextStep(1)">
+                Weiter: Belastungsparameter
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Load -->
+          <div class="form-step" id="step-2">
+            <div class="step-header">
+              <h3>Belastungsparameter</h3>
+              <p>Sportart, Dauer und Intensität definieren den metabolischen Energiebedarf</p>
+            </div>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Sportart</label>
+                <div class="sport-selector">
+                  <label class="sport-option">
+                    <input type="radio" name="sport" value="cycling" checked />
+                    <div class="sport-card">
+                      <div class="sport-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                          <circle cx="8" cy="22" r="5" stroke="currentColor" stroke-width="1.5"/>
+                          <circle cx="24" cy="22" r="5" stroke="currentColor" stroke-width="1.5"/>
+                          <path d="M8 22L14 10h6l4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M14 10l6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                          <circle cx="18" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                      </div>
+                      <span class="sport-name">Radsport</span>
+                      <span class="sport-cap">Max. 120 g/h</span>
+                    </div>
+                  </label>
+                  <label class="sport-option">
+                    <input type="radio" name="sport" value="running" />
+                    <div class="sport-card">
+                      <div class="sport-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                          <circle cx="18" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                          <path d="M14 12l-4 8 4 2 2 6M14 12l4 2 4-4M14 12l2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                      <span class="sport-name">Laufsport</span>
+                      <span class="sport-cap">Max. 60–90 g/h</span>
+                    </div>
+                  </label>
+                  <label class="sport-option">
+                    <input type="radio" name="sport" value="tennis" />
+                    <div class="sport-card">
+                      <div class="sport-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                          <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.5"/>
+                          <path d="M8 10c2 2 2 10 0 12M24 10c-2 2-2 10 0 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                          <path d="M6 16h20" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                      </div>
+                      <span class="sport-name">Tennis</span>
+                      <span class="sport-cap">Changeover-Protokoll</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="duration">Geplante Belastungsdauer</label>
+                <div class="input-wrapper">
+                  <input type="number" id="duration" name="duration" min="30" max="600" placeholder="120" required />
+                  <span class="input-unit">min</span>
+                </div>
+                <span class="form-hint">Bei Tennis: geschätzte Matchdauer</span>
+              </div>
+              <div class="form-group">
+                <label for="intensity">Intensität (% HR<sub>max</sub>)</label>
+                <div class="input-wrapper">
+                  <input type="number" id="intensity" name="intensity" min="50" max="100" placeholder="75" required />
+                  <span class="input-unit">%</span>
+                </div>
+                <div class="zone-display" id="zone-display">
+                  <span class="zone-badge zone-3">Zone 3 — Tempo</span>
+                  <span class="zone-req">→ 30–60 g/h empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn-back" onclick="prevStep(2)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Zurück
+              </button>
+              <button type="button" class="btn-next" onclick="nextStep(2)">
+                Weiter: Umweltkonditionen
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Conditions -->
+          <div class="form-step" id="step-3">
+            <div class="step-header">
+              <h3>Umweltkonditionen</h3>
+              <p>Temperatur und Luftfeuchtigkeit modulieren Schweißverlust und Osmolalitätsgrenzen</p>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="temperature">Umgebungstemperatur</label>
+                <div class="input-wrapper">
+                  <input type="number" id="temperature" name="temperature" min="-5" max="45" placeholder="20" required />
+                  <span class="input-unit">°C</span>
+                </div>
+                <div class="temp-alert" id="temp-alert" style="display:none;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 1L13 13H1L7 1z" stroke="currentColor" stroke-width="1.2"/>
+                    <path d="M7 6v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    <circle cx="7" cy="11" r="0.5" fill="currentColor"/>
+                  </svg>
+                  Hitze (&gt;27°C): Konzentration auf ≤6% begrenzen, Flüssigkeitsfokus
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="humidity">Relative Luftfeuchtigkeit <span class="optional">(optional)</span></label>
+                <div class="input-wrapper">
+                  <input type="number" id="humidity" name="humidity" min="10" max="100" placeholder="50" />
+                  <span class="input-unit">%</span>
+                </div>
+                <span class="form-hint">Erhöht effektiven Schweißverlust bei gleicher Temperatur</span>
+              </div>
+              <div class="form-group full-width">
+                <label>Carbo-Loading <span class="optional">(optional)</span></label>
+                <div class="toggle-group">
+                  <label class="toggle-option">
+                    <input type="radio" name="carbLoading" value="none" checked />
+                    <div class="toggle-card">
+                      <span class="toggle-title">Kein Carbo-Loading</span>
+                      <span class="toggle-desc">Standard Glykogenstatus</span>
+                    </div>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="carbLoading" value="show" />
+                    <div class="toggle-card">
+                      <span class="toggle-title">Plan berechnen</span>
+                      <span class="toggle-desc">7–12 g/kg KG für 24–48h pre-Event</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label>Koffein-Supplementierung</label>
+                <div class="toggle-group">
+                  <label class="toggle-option">
+                    <input type="radio" name="caffeine" value="none" checked />
+                    <div class="toggle-card">
+                      <span class="toggle-title">Kein Koffein</span>
+                      <span class="toggle-desc">Koffein-frei</span>
+                    </div>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="caffeine" value="low" />
+                    <div class="toggle-card">
+                      <span class="toggle-title">3 mg/kg</span>
+                      <span class="toggle-desc">Moderate Supplementierung</span>
+                    </div>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="caffeine" value="high" />
+                    <div class="toggle-card">
+                      <span class="toggle-title">6 mg/kg</span>
+                      <span class="toggle-desc">Maximale ergogene Dosis</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn-back" onclick="prevStep(3)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Zurück
+              </button>
+              <button type="button" class="btn-calculate" onclick="calculateAndShow()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 2h12v12H2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                  <path d="M5 5h2v2H5zM9 5h2v2H9zM5 9h2v2H5zM9 9h2v2H9z" fill="currentColor"/>
+                </svg>
+                Fueling-Plan berechnen
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Results -->
+          <div class="form-step" id="step-4">
+            <div class="results-container" id="results-container">
+              <!-- Filled by JavaScript -->
+            </div>
+            <div class="step-nav" style="margin-top:2rem;">
+              <button type="button" class="btn-back" onclick="prevStep(4)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Parameter anpassen
+              </button>
+              <button type="button" class="btn-print" onclick="window.print()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 4V2h8v2M4 12H2V6h12v6h-2M4 12v2h8v-2M4 12h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Drucken / PDF
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="methodology-section" id="methodology">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Methodik</span>
+        <h2 class="section-title">Algorithmische Grundlagen</h2>
+      </div>
+      <div class="method-grid">
+        <div class="method-step">
+          <div class="method-num">01</div>
+          <h4>Zielrate bestimmen</h4>
+          <p>Basierend auf Belastungsdauer, Intensitätszone und Sportart wird die Target CHO Rate (g/h) in einer mehrstufigen Entscheidungsmatrix ermittelt.</p>
+        </div>
+        <div class="method-step">
+          <div class="method-num">02</div>
+          <h4>Ratio-Selektion</h4>
+          <p>Abhängig von der Zielrate wird das Glukose:Fruktose-Verhältnis dynamisch gewählt: 1:0 (≤60 g/h), 2:1 (60–90 g/h) oder 1:0.8 (90–120 g/h).</p>
+        </div>
+        <div class="method-step">
+          <div class="method-num">03</div>
+          <h4>Rezeptur-Synthese</h4>
+          <p>Saccharose (50% Glukose + 50% Fruktose) deckt den Fruktosebedarf. Maltodextrin ergänzt die Glukoselücke osmolalitätsneutral.</p>
+        </div>
+        <div class="method-step">
+          <div class="method-num">04</div>
+          <h4>Osmolalitätsprüfung</h4>
+          <p>Konzentrationscheck verhindert hypertone Lösungen (&gt;8%). Bei Hitze wird automatisch auf ≤6% reduziert und das Flüssigkeitsvolumen erhöht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-mark small">ROF</span>
+          <span>RunOnFuel Sports Nutrition Science</span>
+        </div>
+        <p class="footer-disclaimer">
+          Dieses Tool basiert auf peer-reviewed Forschungsliteratur (ACSM, Jeukendrup et al., Rowlands et al., Podlogar et al., Tanaka et al.).
+          Es ersetzt keine individuelle sportmedizinische Beratung. Alle Empfehlungen sind Richtwerte.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/engine.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
