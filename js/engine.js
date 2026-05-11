@@ -178,11 +178,26 @@ const Engine = (() => {
    */
   function synthesizeRecipe({ glucose, fructose, targetRate }) {
     if (targetRate <= 0) {
-      return { sucrose: 0, maltodextrin: 0, note: 'Mouthrinse: 6%-Lösung, kein Schlucken erforderlich.' };
+      return {
+        sucrose: 0, maltodextrin: 0, totalCheck: 0,
+        sucroseGlucose: 0, sucroseFructose: 0,
+        note: 'Mouthrinse: 6%-Lösung, kein Schlucken erforderlich.',
+      };
     }
 
-    const sucrose      = fructose * 2;                      // covers all fructose + equal glucose
-    const maltodextrin = Math.max(0, glucose - fructose);   // fills remaining glucose gap
+    if (fructose <= 0) {
+      // Pure glucose / maltodextrin — no sucrose needed
+      return {
+        sucrose:      0,
+        maltodextrin: Math.round(glucose * 10) / 10,
+        totalCheck:   Math.round(glucose * 10) / 10,
+        sucroseGlucose:  0,
+        sucroseFructose: 0,
+      };
+    }
+
+    const sucrose      = fructose * 2;                    // covers all fructose + equal glucose from sucrose
+    const maltodextrin = Math.max(0, glucose - fructose); // fills remaining glucose gap
 
     const totalCheck = sucrose + maltodextrin;
 

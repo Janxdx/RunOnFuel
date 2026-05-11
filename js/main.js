@@ -33,11 +33,31 @@ function collectInputs() {
 function calculateAndShow() {
   if (!validateStep(3)) return;
 
-  const inputs  = collectInputs();
-  const results = Engine.calculate(inputs);
+  const btn = document.querySelector('.btn-calculate');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="animation:spin 0.8s linear infinite">
+      <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="20 18"/>
+    </svg> Berechne…`;
+  }
 
-  renderResults(results, inputs);
-  nextStep(3);
+  // Short delay for perceived computation and animation
+  setTimeout(() => {
+    const inputs  = collectInputs();
+    const results = Engine.calculate(inputs);
+
+    renderResults(results, inputs);
+
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M2 2h12v12H2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+        <path d="M5 5h2v2H5zM9 5h2v2H9zM5 9h2v2H5zM9 9h2v2H9z" fill="currentColor"/>
+      </svg> Fueling-Plan berechnen`;
+    }
+
+    nextStep(3);
+  }, 350);
 }
 
 // ── Render ────────────────────────────────────────────────────────────────
@@ -142,7 +162,38 @@ function buildKPIGrid(rows) {
 }
 
 function buildRecipePanel(r) {
+  const hasSucrose      = r.recipe.sucrose > 0;
   const hasMaltodextrin = r.recipe.maltodextrin > 0;
+
+  const sucroseRow = hasSucrose ? `
+    <div class="ingredient-row">
+      <div>
+        <div class="ingredient-amount">${r.recipe.sucrose} <span class="ingredient-unit">g</span></div>
+      </div>
+      <div>
+        <div class="ingredient-name">Haushaltszucker (Saccharose)</div>
+        <div class="ingredient-detail">Liefert ${r.recipe.sucroseGlucose} g Glukose + ${r.recipe.sucroseFructose} g Fruktose · inhärentes 1:1-Verhältnis</div>
+      </div>
+    </div>
+  ` : '';
+
+  const plusRow = hasSucrose && hasMaltodextrin ? '<div class="recipe-plus">+</div>' : '';
+
+  const maltodextrinRow = hasMaltodextrin ? `
+    <div class="ingredient-row">
+      <div>
+        <div class="ingredient-amount">${r.recipe.maltodextrin} <span class="ingredient-unit">g</span></div>
+      </div>
+      <div>
+        <div class="ingredient-name">Maltodextrin (DE &lt;12 empfohlen)</div>
+        <div class="ingredient-detail">
+          ${hasSucrose
+            ? 'Ergänzt Glukoselücke osmolalitätsneutral · Nahezu geschmacksneutral'
+            : 'Reine Glukosequelle · SGLT1 nicht gesättigt bei dieser Rate · Niedrige Osmolalität'}
+        </div>
+      </div>
+    </div>
+  ` : '';
 
   return buildPanel(
     'Rezeptur-Generator',
@@ -152,27 +203,9 @@ function buildRecipePanel(r) {
     <div class="recipe-card">
       <div class="recipe-title">Zubereitung pro Stunde Belastung</div>
       <div class="recipe-ingredients">
-        <div class="ingredient-row">
-          <div>
-            <div class="ingredient-amount">${r.recipe.sucrose} <span class="ingredient-unit">g</span></div>
-          </div>
-          <div>
-            <div class="ingredient-name">Haushaltszucker (Saccharose)</div>
-            <div class="ingredient-detail">Liefert ${r.recipe.sucroseGlucose} g Glukose + ${r.recipe.sucroseFructose} g Fruktose · 1:1 inhärentes Verhältnis</div>
-          </div>
-        </div>
-        ${hasMaltodextrin ? `
-        <div class="recipe-plus">+</div>
-        <div class="ingredient-row">
-          <div>
-            <div class="ingredient-amount">${r.recipe.maltodextrin} <span class="ingredient-unit">g</span></div>
-          </div>
-          <div>
-            <div class="ingredient-name">Maltodextrin (DE &lt;12 empfohlen)</div>
-            <div class="ingredient-detail">Reine Glukosequelle · Nahezu geschmacksneutral · Niedrige Osmolalität</div>
-          </div>
-        </div>
-        ` : ''}
+        ${sucroseRow}
+        ${plusRow}
+        ${maltodextrinRow}
         <div class="recipe-plus">+</div>
         <div class="ingredient-row">
           <div>
@@ -193,7 +226,7 @@ function buildRecipePanel(r) {
           </div>
           <div class="result-val">
             <strong>${r.ratio.glucose} g</strong>
-            <span>Glukose total</span>
+            <span>Glukose (SGLT1)</span>
           </div>
           <div class="result-val">
             <strong>${r.ratio.fructose} g</strong>
@@ -201,7 +234,7 @@ function buildRecipePanel(r) {
           </div>
           <div class="result-val">
             <strong>${r.recipe.totalCheck} g</strong>
-            <span>CHO-Substrat gesamt</span>
+            <span>Substrat gesamt</span>
           </div>
         </div>
       </div>
