@@ -457,6 +457,26 @@ input.invalid {
   color: var(--c-accent);
 }
 
+.btn-calculate:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.results-container > * {
+  animation: slideUp var(--t-slow) var(--ease-out) both;
+}
+
+.results-container > *:nth-child(1) { animation-delay: 0ms; }
+.results-container > *:nth-child(2) { animation-delay: 60ms; }
+.results-container > *:nth-child(3) { animation-delay: 120ms; }
+.results-container > *:nth-child(4) { animation-delay: 180ms; }
+.results-container > *:nth-child(5) { animation-delay: 240ms; }
+.results-container > *:nth-child(6) { animation-delay: 300ms; }
+.results-container > *:nth-child(7) { animation-delay: 360ms; }
+.results-container > *:nth-child(8) { animation-delay: 420ms; }
+.results-container > *:nth-child(9) { animation-delay: 480ms; }
+
 /* ============================================================
    Results Container
    ============================================================ */
